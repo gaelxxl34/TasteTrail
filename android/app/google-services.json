@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "571105515916",
+    "project_id": "flutter-login-app-7bd8a",
+    "storage_bucket": "flutter-login-app-7bd8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571105515916:android:d3124a8c3904bbfe3bdea9",
+        "android_client_info": {
+          "package_name": "com.example.authentification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571105515916-8oalcsvd547cjv3oph7kfbfl0igbegh2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.authentification",
+            "certificate_hash": "ee283482eaca37f27b590401c3a41116c7188341"
+          }
+        },
+        {
+          "client_id": "571105515916-dlv2p1q3pp8ta848lpftel7ui6faedu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiT2FkJQH0inqtdYkAZF4AzVaDWIGwydg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571105515916-dlv2p1q3pp8ta848lpftel7ui6faedu4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "571105515916-jbh81845hfv68en1vck2hqmtal3a2ucr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rolexStandsFinding"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571105515916:android:0881df9f39ee1b733bdea9",
+        "android_client_info": {
+          "package_name": "com.example.rolex_stands_finding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571105515916-rt24uph8hfermbttg2rm36ctvvh20dtt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rolex_stands_finding",
+            "certificate_hash": "ee283482eaca37f27b590401c3a41116c7188341"
+          }
+        },
+        {
+          "client_id": "571105515916-dlv2p1q3pp8ta848lpftel7ui6faedu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiT2FkJQH0inqtdYkAZF4AzVaDWIGwydg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571105515916-dlv2p1q3pp8ta848lpftel7ui6faedu4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "571105515916-jbh81845hfv68en1vck2hqmtal3a2ucr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.rolexStandsFinding"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

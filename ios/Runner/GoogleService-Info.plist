@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>571105515916-jbh81845hfv68en1vck2hqmtal3a2ucr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.571105515916-jbh81845hfv68en1vck2hqmtal3a2ucr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>571105515916-8oalcsvd547cjv3oph7kfbfl0igbegh2.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA0wpw-QgrtTC28xRzPdtZjKs52JRcLw00</string>
+	<key>GCM_SENDER_ID</key>
+	<string>571105515916</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.rolexStandsFinding</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-login-app-7bd8a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-login-app-7bd8a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:571105515916:ios:d0863d8ad690e61b3bdea9</string>
+</dict>
+</plist>
