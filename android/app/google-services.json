@@ -58,6 +58,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "571105515916-mocm3c0uh7kg0odmj3gildbf0qsr6vl0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rolex_stands_finding",
+            "certificate_hash": "c9d93ca3771c6bd2a8f3efd1981a31efa6204c12"
+          }
+        },
+        {
           "client_id": "571105515916-rt24uph8hfermbttg2rm36ctvvh20dtt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

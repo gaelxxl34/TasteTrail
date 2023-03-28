@@ -7,14 +7,20 @@ import '../../../../constants/sizes.dart';
 import '../../../../repository/authentification_repository/authentification_repository.dart';
 import '../../controllers/signup_controller.dart';
 import '../../models/user_model.dart';
+import '../login/login-form.dart';
 
 
 
-class SignUpFormWidget extends StatelessWidget {
+class SignUpFormWidget extends StatefulWidget {
   const SignUpFormWidget({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<SignUpFormWidget> createState() => _SignUpFormWidgetState();
+}
+
+class _SignUpFormWidgetState extends State<SignUpFormWidget> {
   @override
   Widget build(BuildContext context) {
 
@@ -79,7 +85,6 @@ class SignUpFormWidget extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextFormField(
-
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a phone number';

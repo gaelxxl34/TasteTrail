@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:7.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -15,6 +15,21 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://mapbox.bintray.com/mapbox'}
+        mavenCentral()
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = "mapbox"
+                // Use the secret token you stored in gradle.properties as the password
+                password = project.properties['sk.eyJ1IjoiYWZyYWgzMzMzIiwiYSI6ImNsZTgybW81cDBhbjIzbnJ6aTV5ejZ4MnUifQ.oSpiThM4E5eOxrtaSv0LOA'] ?: ""
+            }
+        }
     }
 }
 

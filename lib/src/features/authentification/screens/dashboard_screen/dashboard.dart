@@ -1,24 +1,78 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/widgets/catalogue_food.dart';
+import 'package:location/location.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/widgets/catalog_box.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/widgets/dashboard_container_box.dart';
 
+import '../../../../../main.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/image_strings.dart';
-import '../../../../constants/text_strings.dart';
-import '../../../../repository/authentification_repository/authentification_repository.dart';
 import '../../controllers/user_details_controller.dart';
 import '../../models/user_model.dart';
+import 'map_box/helpers/mapbox_handler.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  @override
+  void initState() {
+    initializeLocationAndSave();
+    super.initState();
+  }
+
+  void initializeLocationAndSave() async {
+    // Ensure all permissions are collected for Locations
+    Location _location = Location();
+    bool? _serviceEnabled;
+    PermissionStatus? _permissionGranted;
+
+    _serviceEnabled = await _location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await _location.requestService();
+    }
+
+    _permissionGranted = await _location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await _location.requestPermission();
+    }
+
+    // Get capture the current user location
+    LocationData _locationData = await _location.getLocation();
+    LatLng currentLatLng =
+    LatLng(_locationData.latitude!, _locationData.longitude!);
+    Map currentLocation = await getParsedReverseGeocoding(currentLatLng);
+
+    List<String> stationDistance = List.generate(4, (index) => '0');
+    for (int i = 0; i < 4; i++) {
+      stationDistance[i] =
+          ((await getDirectionsAPIResponse(currentLatLng, i))['distance'] /
+              1000)
+              .toStringAsFixed(4);
+    }
+
+    // Store the user location in sharedPreferences
+    sharedPreferences.setString('location', json.encode(currentLocation));
+    sharedPreferences.setDouble('latitude', _locationData.latitude!);
+    sharedPreferences.setDouble('longitude', _locationData.longitude!);
+    sharedPreferences.setStringList('distances', stationDistance);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(UserDetailsController());
-
 
     return SafeArea(
       child: Scaffold(
@@ -28,9 +82,7 @@ class Dashboard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 25,
-                ),
+                SizedBox(height: 25),
 
                 // -- page header
               FutureBuilder(
@@ -43,10 +95,8 @@ class Dashboard extends StatelessWidget {
                         children: [
                           Text(
                             "Hello, ${userData.firstname}! it's a beautiful day",
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold, color: Colors.black),
+
                           ),
                         ],
                       );
@@ -64,21 +114,19 @@ class Dashboard extends StatelessWidget {
                   }
                 },
               ),
-                SizedBox(
-                  height: 9,
-                ),
+                SizedBox(height: 9),
 
                 Container(
                   padding: EdgeInsets.all(10),
                   width: double.infinity,
-                  height: 130,
+                  height: 160,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(photoHome),
                       fit: BoxFit.cover
                     ),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(10),
 
                       boxShadow: [
                         BoxShadow(
@@ -87,167 +135,33 @@ class Dashboard extends StatelessWidget {
                       ]),
                  // child: const Text("Find the nearest stand or local food and get natural food for breakfast, launch or dinner enjoy, Eat Bio!"),
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
 
                 Text(
                   'Catalogues',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
 
-                SizedBox(
-                  height: 220,
-                  child: ListView(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      catalogue(
-                        image:
-                            "https://img.freepik.com/free-photo/high-angle-table-full-delicious-food-arrangement_23-2149141347.jpg",
-                        text1: 'Hotel International',
-                        text2: 'Breakfast, Lunch,Super',
-                      ),
-                      catalogue(
-                        image:
-                            "https://img.freepik.com/free-photo/flat-lay-composition-different-foods_23-2148826857.jpg",
-                        text1: 'Shawarma Delight',
-                        text2: 'Sandwiches, soft Drinks',
-                      ),
-                      catalogue(
-                        image:
-                            "https://as2.ftcdn.net/v2/jpg/05/58/80/51/1000_F_558805197_hAZprxbTr47BJK92yJ0LZ6QYbKualHqn.jpg",
-                        text1: 'Dairy Treat',
-                        text2: 'Breakfast,grabs',
-                      ),
-                      catalogue(
-                        image:
-                            "https://as2.ftcdn.net/v2/jpg/03/33/56/17/1000_F_333561737_z8poViL5VhB2qUgnHERr93leyQphMMpB.jpg",
-                        text1: 'First Kiss Chef',
-                        text2: 'Fastfood, lunch',
-                      ),
-                      catalogue(
-                        image:
-                            "https://as2.ftcdn.net/v2/jpg/05/37/86/39/1000_F_537863945_FTk780Pvm2S0EKC7qG68KIjbeBlVqq43.jpg",
-                        text1: 'Hotel Afros',
-                        text2: 'Lunch, Breakfast',
-                      ),
-                      catalogue(
-                          image:
-                              "https://as1.ftcdn.net/v2/jpg/05/65/33/40/1000_F_565334078_opRHu9aaCermkDmC7p3coLJVSgrTIeD1.jpg",
-                          text1: 'text1',
-                          text2: 'text2'),
-                      catalogue(
-                          image:
-                              "https://as2.ftcdn.net/v2/jpg/00/59/33/75/1000_F_59337550_UZQ4X6wGvGSTnLPuTu2X3ifBqSv0MR2h.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as1.ftcdn.net/v2/jpg/00/92/76/76/1000_F_92767628_Q18SlocFzWxoAUSDDWwuVxStrChEyaJF.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as2.ftcdn.net/v2/jpg/02/23/15/25/1000_F_223152587_GtGRTp3tMFwp8eB2tV2xi7K6uXxQosXv.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as2.ftcdn.net/v2/jpg/02/29/15/65/1000_F_229156511_stgCLK8cTT4ygmVVAUqnzqeVtEqq7mWq.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as1.ftcdn.net/v2/jpg/05/61/93/12/1000_F_561931244_pZPdEjD8NUkevsYdQYGOupjgxQrjfXyx.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as1.ftcdn.net/v2/jpg/02/24/36/02/1000_F_224360288_yHJEAvIQa1Y8ARUC3dHBBGJBseJuW8gK.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as2.ftcdn.net/v2/jpg/05/66/86/91/1000_F_566869138_7zak19bKj9Lii8w2FJPcBJQw6WnqV9e9.jpg",
-                          text1: "text1",
-                          text2: "text2"),
-                      catalogue(
-                          image:
-                              "https://as2.ftcdn.net/v2/jpg/05/64/10/71/1000_F_564107178_fvIGq6frkIQCYGpmvweN1y2totUXcNAr.jpg",
-                          text1: "text1",
-                          text2: "text2")
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
+                //-- This the box of the catalogue
+                CatalogBox(),
+                SizedBox(height: 6),
+
+
+                // -- our services section
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Services',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: tRed),
+
+                    ),
+                    Icon(Icons.location_on, color: tRed,),
+                  ],
                 ),
 
-                Text(
-                  'Our Services',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 120,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: (){},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.white,
-                          ),
-                          height: 100,
-                          width: 170,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(Icons.location_on),
-                              Text("Find")
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: (){},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.white,
-                          ),
-                          height: 100,
-                          width: 170,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(LineAwesomeIcons.list_ul, ),
-                              Text("Order")
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                DashContainerBox(),
               ],
             ),
           ),

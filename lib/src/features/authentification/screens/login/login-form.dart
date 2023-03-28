@@ -9,14 +9,21 @@ import '../../controllers/signup_controller.dart';
 
 
 
-class tryii extends StatelessWidget {
-  const tryii({Key? key}) : super(key: key);
+class LoginTheForm extends StatefulWidget {
+  const LoginTheForm({Key? key}) : super(key: key);
 
+  @override
+  State<LoginTheForm> createState() => _LoginTheFormState();
+}
+
+class _LoginTheFormState extends State<LoginTheForm> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
 
+
     final _formKey = GlobalKey<FormState>();
+    String UserInput;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: tFormHeight - 10),
@@ -27,7 +34,9 @@ class tryii extends StatelessWidget {
           children: [
 
             TextFormField(
-
+              onChanged: (text){
+                UserInput = text;
+              },
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a phone number';
@@ -67,6 +76,7 @@ class tryii extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Data')),
                       );
+
                     }
 
                   },

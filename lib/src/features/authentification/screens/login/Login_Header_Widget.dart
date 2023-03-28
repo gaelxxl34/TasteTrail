@@ -24,13 +24,10 @@ class LoginHeaderWidget extends StatelessWidget {
           height: size.height * 0.2,
         ),
         Text(
-          loginTitle,
-          style: Theme.of(context).textTheme.headline2,
+          loginTitle.toUpperCase(),
+          style: Theme.of(context).textTheme.headline1,
         ),
-        Text(
-          loginSubtitle,
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
+
       ],
     );
   }

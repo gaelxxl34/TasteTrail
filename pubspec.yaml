@@ -13,7 +13,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
   font_awesome: ^5.10.1
   google_fonts: ^3.0.1
@@ -24,6 +23,31 @@ dependencies:
   flutter_otp_text_field: ^1.1.1
   line_awesome_flutter: ^2.0.0
   url_launcher: ^6.1.10
+  internet_connection_checker: ^1.0.0+1
+  connectivity_plus: ^3.0.3
+  location: ^4.3.0
+  shared_preferences: ^2.0.13
+  flutter_dotenv: ^5.0.2
+  mapbox_gl: ^0.15.0
+  dio: ^4.0.6
+  cached_network_image: ^3.2.0
+  lottie: ^2.2.0
+  liquid_swipe: ^3.0.0
+  smooth_page_indicator: ^1.0.0+2
+  flutter_launcher_icons: ^0.11.0
+  flutter_native_splash: ^2.2.16
+
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons.png"
+
+flutter_native_splash:
+
+  color: "#000000"
+  image: "assets/icon.png"
 
 dev_dependencies:
   flutter_test:
@@ -40,3 +64,6 @@ flutter:
 
   assets:
     - assets/images/login_signup_images/
+    - assets/icon/
+    - assets/config/.env
+    - assets/location.json

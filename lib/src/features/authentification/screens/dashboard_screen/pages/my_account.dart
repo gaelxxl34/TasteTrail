@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/pages/my_account_pages/about_page.dart';
 import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/pages/my_account_pages/user_info.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/pages/pages_widget/menu.dart';
 
 import '../../../../../constants/colors.dart';
 import '../../../../../constants/image_strings.dart';
@@ -22,8 +24,6 @@ class MyAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(UserDetailsController());
 
-
-
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -41,12 +41,13 @@ class MyAccount extends StatelessWidget {
               // child: Center(child: Text('sign in as ' + phone.phoneNumber!)),
               child: FutureBuilder(
           future: controller.getUserData(),
-      builder: (context, snapshot) {
+          builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               UserModel userData = snapshot.data as UserModel;
               return Column(
                 children: [
+                  // -- Header section
                   Container(
                     width: 120,
                     height: 110,
@@ -61,9 +62,7 @@ class MyAccount extends StatelessWidget {
                           child: Icon(LineAwesomeIcons.user_check, size: 60,)),
                     ),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5),
                   Text(
                     userData.firstname + ' ' + userData.lastname,
                     style: Theme.of(context).textTheme.headline4,
@@ -81,105 +80,19 @@ class MyAccount extends StatelessWidget {
                         style: OutlinedButton.styleFrom(
                           shape: StadiumBorder(),
                           foregroundColor: tWhiteColor,
-                          backgroundColor: tDarkColor,
+                          backgroundColor: tRed,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(()=> UserInformation());
+                        },
                         child: Text(tEditProfile),
                       )),
                   const SizedBox(height: 30),
                   const Divider(),
                   const SizedBox(height: 10),
 
-                  // -- Menu
-                  ListTile(
-                    onTap: (){
-                      Get.to(() => UserInformation());
-                    },
-                    leading: Container(
-                      width: 40, height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: tAccentColor.withOpacity(0.1),
-                      ),
-                      child: Icon(LineAwesomeIcons.info, color: tDarkColor,),
-                    ),
-                    title: Text(tMenu3, style: Theme.of(context).textTheme.bodyText1,),
-                    trailing: Container(
-                      width: 30, height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Icon(LineAwesomeIcons.angle_right,size: 18.0, color: tDarkColor,),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: (){
-                      Get.to(() => HelpUser());
-                    },
-                    leading: Container(
-                      width: 40, height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: tAccentColor.withOpacity(0.1),
-                      ),
-                      child: Icon(Icons.help_outline_rounded, color: tDarkColor,),
-                    ),
-                    title: Text(tMenu6, style: Theme.of(context).textTheme.bodyText1,),
-                    trailing: Container(
-                      width: 30, height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Icon(LineAwesomeIcons.angle_right,size: 18.0, color: Colors.black,),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: (){
-                      Get.to(() => SendFeedback());
-                    },
-                    leading: Container(
-                      width: 40, height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: tAccentColor.withOpacity(0.1),
-                      ),
-                      child: Icon(Icons.messenger_outline, color: tDarkColor,),
-                    ),
-                    title: Text(tMenu7, style: Theme.of(context).textTheme.bodyText1,),
-                    trailing: Container(
-                      width: 30, height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Icon(LineAwesomeIcons.angle_right,size: 18.0, color: Colors.black,),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: (){
-                      AuthentificationRepository.instance.logout();
-                    },
-
-                    leading: Container(
-                      width: 40, height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: tAccentColor.withOpacity(0.1),
-                      ),
-                      child: Icon(LineAwesomeIcons.alternate_sign_out, color: tDarkColor,),
-                    ),
-                    title: Text(tMenu1, style: TextStyle(color: Colors.red),),
-                    trailing: Container(
-                      width: 30, height: 30,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.withOpacity(0.2),
-                      ),
-                      child: Icon(LineAwesomeIcons.angle_right,size: 18.0, color: tDarkColor,),
-                    ),
-                  ),
+                  // -- Menu section
+                  MenuList()
 
                 ],
               );
@@ -202,63 +115,3 @@ class MyAccount extends StatelessWidget {
     );
   }
 }
-
-/*
-* FutureBuilder<List<UserModel>>(
-              future: controller.getAllUser(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (c, index) {
-                          return Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  "Welcome ${user.displayName!}" , style: TextStyle(fontWeight: FontWeight.bold
-                                  //
-                                ),),
-                                //subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(snapshot.data![index].Phone),],),
-                              )
-                            ],
-                          );
-                        });
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
-                  } else {
-                    return Center(child: Text('Something went wrong'));
-                  }
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ))
-            *
-            *
-            *
-            *
-            *
-            *
-            * ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data!.length,
-                itemBuilder: (c, index) {
-                  return Column(
-                    children: [
-                      ListTile(
-                        title: Text(
-                          "Welcome" , style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red
-                          //
-                        ),),
-                        //subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(snapshot.data![index].Phone),],),
-                      )
-                    ],
-                  );
-                });
-* */

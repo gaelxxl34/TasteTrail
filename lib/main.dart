@@ -1,24 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/dashboard.dart';
-import 'package:rolex_stands_finding/src/features/authentification/screens/forget_password/forget_password_otp/otp_screen.dart';
+import 'package:rolex_stands_finding/src/features/authentification/controllers/networkcontrol/dependency_injection.dart';
 import 'package:rolex_stands_finding/src/features/authentification/screens/login/login_screen.dart';
-import 'package:rolex_stands_finding/src/features/authentification/screens/signup/signup_screnn.dart';
 import 'package:rolex_stands_finding/src/repository/authentification_repository/authentification_repository.dart';
 
 import 'package:rolex_stands_finding/src/themes/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 import 'src/features/authentification/screens/dashboard_screen/navbar/narbar.dart';
 
+
+late SharedPreferences sharedPreferences;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  sharedPreferences = await SharedPreferences.getInstance();
+  await dotenv.load(fileName: "assets/config/.env");
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthentificationRepository()));
+  DependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -57,7 +63,7 @@ class _MyAppState extends State<MyApp> {
     return GetMaterialApp(
       theme: GaelTheme.lighttheme,
       darkTheme: GaelTheme.darktheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       home: isLogin ?  const Home() :  const LoginScreen(),
     );

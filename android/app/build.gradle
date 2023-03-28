@@ -26,7 +26,9 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
+    buildToolsVersion '29.0.0'
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -58,6 +60,8 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            shrinkResources false
+            minifyEnabled false
             signingConfig signingConfigs.debug
         }
     }
@@ -69,4 +73,15 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'com.android.support:multidex:1.0.3'
+        implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'){
+            exclude group: 'group_name', module: 'module_name'
+        }
+        implementation ("com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6")
+    }
+    configurations {
+        all*.exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+    }
 }

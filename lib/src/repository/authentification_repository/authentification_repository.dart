@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class AuthentificationRepository extends GetxController{
 
   late final Rx<User?> firebaseUser;
   var verificationId = ''.obs;
-
+  final _db = FirebaseFirestore.instance;
 
 
   @override
@@ -54,6 +55,11 @@ class AuthentificationRepository extends GetxController{
         }
         },
     );
+  }
+
+  Future<int> findUserNo(String Phone) async{
+    final snapshot = await _db.collection('Users').where("PhoneNo", isEqualTo: Phone).get();
+    return snapshot.docs.length;
   }
 
   Future<bool> verifyOTP(String otp) async{

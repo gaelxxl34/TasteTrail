@@ -26,11 +26,11 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 FormHeaderWidget(
-                  image: tryi,
-                  title: "login",
+
+                  title: "Login",
                   subtitle: "screen",
                 ),
-                const tryii(),
+                const LoginTheForm(),
                 LoginFooterWidget(),
               ],
             ),

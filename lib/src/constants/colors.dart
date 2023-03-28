@@ -13,8 +13,8 @@ const tRed = Color(0xFFF50016);
 
 // on boarding colors
 
-const onboardColor1 = Colors.blueAccent;
-const onboardColor2 = Color(0xFF706B6B);
-const onboardColor3 = Color(0xFF6D7DBB);
+const onboardColor1 = Color(0xFFB00F0F);
+const onboardColor2 = Color(0xFFE11D2C);
+const onboardColor3 = Color(0xFFFF0904);
 
 // welcome page colors

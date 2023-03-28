@@ -16,18 +16,21 @@ class UserRepository extends GetxController {
 
 
   createUser(UserModel user) async {
-    CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
-    user.uid = usersCollection.id;
+    CollectionReference<Map<String, dynamic>> users = _db.collection("Users");
 
-    await usersCollection.get(user.toJson()).whenComplete(
+    // Generate the UID automatically using the doc() method
+    DocumentReference<Map<String, dynamic>> docRef = users.doc();
+    user.uid = docRef.id;
+
+    await docRef.set(user.toJson()).whenComplete(
           () => Get.snackbar(
-            "Success",
-            "your account has been created",
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.green.withOpacity(0.1),
-            colorText: Colors.green),
-        )
-    .catchError((error, stackTrace) {
+          "Success",
+          "your account has been created",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green.withOpacity(0.1),
+          colorText: Colors.green),
+    )
+        .catchError((error, stackTrace) {
       Get.snackbar(
           "Error",
           "Something went wrong. Try again",
@@ -38,7 +41,7 @@ class UserRepository extends GetxController {
     });
   }
 
- Future<int> findUsers(String Phone) async{
+  Future<int> findUsers(String Phone) async{
    final snapshot = await _db.collection('Users').where("PhoneNo", isEqualTo: Phone).get();
     // final userData = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
    return snapshot.docs.length;

@@ -14,15 +14,21 @@ import '../../../../../constants/text_strings.dart';
 import '../../../../../repository/authentification_repository/authentification_repository.dart';
 import '../../../controllers/otp_controller.dart';
 import '../../../controllers/user_details_controller.dart';
+import '../../login/login-form.dart';
 
 class OTPscreen extends StatelessWidget {
-  const OTPscreen({Key? key}) : super(key: key);
+
+
+    String PhoneNum;
+
+  OTPscreen({required this.PhoneNum});
 
   @override
   Widget build(BuildContext context) {
     var otp;
 
     var otpController = Get.put(OTPController());
+
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -38,7 +44,7 @@ class OTPscreen extends StatelessWidget {
               ),
               Text(otpSubtitle, style: Theme.of(context).textTheme.headline4,),
               SizedBox(height: 40.0,),
-              Text(otpMessage  , textAlign: TextAlign.center,),
+              Text(otpMessage + PhoneNum , textAlign: TextAlign.center,),
 
               SizedBox(height: 20.0,),
               OtpTextField(
@@ -62,6 +68,72 @@ class OTPscreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       OTPController.instance.verifyOTP(otp);
+                    },
+                    child: Text(
+                      tNext.toUpperCase(),
+                    ),
+                  )),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// -- opt screen for sign up page
+class OTPscreen2 extends StatelessWidget {
+
+
+    String PhoneNum;
+
+  OTPscreen2({required this.PhoneNum});
+
+  @override
+  Widget build(BuildContext context) {
+    var otp;
+
+    var otpController2 = Get.put(OTPController2());
+
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(tDefaultSize),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage(tryi),
+                height: size.height * 0.3,
+              ),
+              Text(otpSubtitle, style: Theme.of(context).textTheme.headline4,),
+              SizedBox(height: 40.0,),
+              Text(otpMessage + PhoneNum , textAlign: TextAlign.center,),
+
+              SizedBox(height: 20.0,),
+              OtpTextField(
+                numberOfFields: 6,
+                fillColor: Colors.black.withOpacity(0.1),
+                filled: true,
+                onSubmit: (code){
+                  otp = code;
+                  OTPController2.instance.verifyOTP(otp);
+                },
+              ),
+              const SizedBox(height: 50),
+              SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        foregroundColor: tWhiteColor,
+                        backgroundColor: tRed,
+                        padding: EdgeInsets.symmetric(vertical: 18)
+                    ),
+                    onPressed: () {
+                      OTPController2.instance.verifyOTP(otp);
                     },
                     child: Text(
                       tNext.toUpperCase(),

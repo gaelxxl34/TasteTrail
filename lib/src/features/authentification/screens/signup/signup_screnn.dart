@@ -24,10 +24,10 @@ class SignUpScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 FormHeaderWidget(
-                  image: tryi,
-                  title: otpMes,
-                  subtitle: otpC,
+                  title: "Sign Up" ,
+                  subtitle: "Screen" ,
                 ),
+
                 SignUpFormWidget(),
                 SignUpFooter(),
               ],

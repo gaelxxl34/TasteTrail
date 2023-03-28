@@ -17,12 +17,12 @@ const String gAppTagLine = "Create awesome list";
 
 // On board text
 
-const String OnboardTitle1 = "Create awesome lists";
-const String OnboardTitle2 = "Choose your activity";
-const String OnboardTitle3 = "Organise Your tasks";
-const String OnboardSubitle1 = "Let's start the journey with us using this amazing and easy app";
-const String OnboardSubitle2 = "Activities are provided, choose according to your luxury";
-const String OnboardSubitle3 = "Write down your task and create a priority queue";
+const String OnboardTitle1 = "Find local restaurant";
+const String OnboardTitle2 = "Profile details";
+const String OnboardTitle3 = "Tracking service";
+const String OnboardSubitle1 = "Search for the nearest local food restaurant and rolex stand";
+const String OnboardSubitle2 = "Security for your personal data and great customer service";
+const String OnboardSubitle3 = "We provide tracking service from your location to the nearest local restaurant or rolex stand";
 
 const String Onboardounter1 = "1/3";
 const String Onboardounter2 = "2/3";
@@ -104,6 +104,7 @@ const String tMenu4 = "Billing Details";
 const String tMenu5 = "User Management";
 const String tMenu6 = "Help";
 const String tMenu7 = "Send feedback";
+const String tMenu8 = "About";
 
 // -- update profilr screen
 const String tdelete = "Delete";

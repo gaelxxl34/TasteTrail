@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rolex_stands_finding/src/features/authentification/screens/login/login_screen.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/signup/signup_screnn.dart';
 
 import '../../../repository/authentification_repository/authentification_repository.dart';
 import '../../../repository/user_repository/user_repository.dart';
@@ -20,14 +21,24 @@ class SignUpController extends GetxController{
   final lastname = TextEditingController();
 
   final UserRepo = Get.put(UserRepository());
+  final AuthRepo = Get.put(AuthentificationRepository());
 
-  // call this function from sign up screen and see the magic
-  void phoneAuthentification(String phoneNumber) {
-    AuthentificationRepository.instance.phoneAuthentification(phoneNumber);
-    Get.to(() => OTPscreen());
+
+//-- this is a method for login screen
+  Future<void> phoneAuthentification(String phoneNumber) async{
+    final UserLogin = await AuthRepo.findUserNo(phoneNumber);
+    print('hello '+phoneNumber);
+    if(UserLogin > 0){
+      AuthentificationRepository.instance.phoneAuthentification(phoneNumber);
+      Get.to(() => OTPscreen(PhoneNum: phoneN.text,));
+    }else {
+      Get.snackbar("Please Signup", "Unknown Phone number", colorText: Colors.red);
+      Get.to(() => SignUpScreen());
+    }
+
   }
 
-  // -- the function below help to get the user data
+  // -- the function below help to get the user data for sign up screen
   Future<void> createUser(UserModel user) async {
     //check if phone number is taken
     final usersFound = await UserRepo.findUsers(user.Phone);
@@ -36,13 +47,18 @@ class SignUpController extends GetxController{
       Get.snackbar("Please login", "Phone number already exist", colorText: Colors.red);
       Get.to(() => LoginScreen());
     }else {
-      phoneAuthentification(user.Phone);
-      Get.to(() => OTPscreen());
+      print('hello new userfound'+user.Phone);
+      phoneAuthentificationSignUp(user.Phone);
+      Get.to(() => OTPscreen2(PhoneNum: phoneN.text,));
       await UserRepo.createUser(user);
     }
+  }
+  void phoneAuthentificationSignUp(String PhoneNo) {
+    AuthentificationRepository.instance.phoneAuthentification(PhoneNo);
   }
 
 }
 
- 
+
+
 
