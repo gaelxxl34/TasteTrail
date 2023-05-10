@@ -2,8 +2,6 @@
 
 TasteTrail is a mobile app that helps users find the nearest local restaurants in their neighborhood.
 
-![Screenshot of TasteTrail home screen](screenshots/home.png)
-
 ## Getting Started
 
 To get started with TasteTrail, you'll need to have the following installed on your device:
@@ -18,15 +16,12 @@ TasteTrail includes the following features:
 - Search for restaurants by name, cuisine, or location
 - Save your favorite restaurants for easy access
 
-![Screenshot of TasteTrail search screen](screenshots/search.png)
+Here's a demo video of TasteTrail in action:
 
-![Screenshot of TasteTrail restaurant details screen](screenshots/details.png)
-
-![Screenshot of TasteTrail restaurant location on map screen](screenshots/map.png)
-
-![Screenshot of TasteTrail restaurant reviews screen](screenshots/reviews.png)
-
-![Screenshot of TasteTrail favorites screen](screenshots/favorites.png)
+<video controls width="100%">
+  <source src="https://github.com/gaelxxl34/E-commerce/assets/107554725/b7406bf8-6462-45ed-94b6-a54fd02b3a05" type="video/mp4">
+  <p>Your browser does not support the video tag.</p>
+</video>
 
 ## Contributions and Issues
 
