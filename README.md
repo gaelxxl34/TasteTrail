@@ -24,12 +24,12 @@ Click the image above to watch the demo video.
 
 Here are some screenshots of the app:
 <br>
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/6.jpg" alt="Screenshot 1" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/4%20(2).jpg" alt="Screenshot 2" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/3%20(2).jpg" alt="Screenshot 3" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/5.jpg" alt="Screenshot 4" width="200">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/1.jpg" alt="Screenshot 5" width="200">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/blob/main/2.jpg" alt="Screenshot 6" width="200">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/6.jpg" alt="Screenshot 1" width="200" style="margin-right: 20px;">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/2.jpg" alt="Screenshot 2" width="200" style="margin-right: 20px;">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/3%20(2).jpg" alt="Screenshot 3" width="200" style="margin-right: 20px;">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/4%20(2).jpg" alt="Screenshot 4" width="200">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/5.jpg" alt="Screenshot 5" width="200">
+<img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/1.jpg" alt="Screenshot 6" width="200">
 
 ## Contributions and Issues
 
