@@ -24,10 +24,10 @@ Click the image above to watch the demo video.
 
 Here are some screenshots of the app:
 <br>
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/1.jpg" alt="Screenshot 1" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/2.jpg" alt="Screenshot 2" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/3(2).jpg" alt="Screenshot 3" width="200" style="margin-right: 20px;">
-<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/4(2).jpg" alt="Screenshot 4" width="200">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/1.jpg" alt="Screenshot 1" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/2.jpg" alt="Screenshot 2" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/3(2).jpg" alt="Screenshot 3" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/4(2).jpg" alt="Screenshot 4" width="200">
 
 ## Contributions and Issues
 
