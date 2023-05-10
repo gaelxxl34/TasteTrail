@@ -1,6 +1,6 @@
 <img src="https://github.com/gaelxxl34/E-commerce-Images/blob/main/TasteTrail-1%20(14).png" alt="Screenshot 1" width="200" style="margin-right: 20px;">
 
-TasteTrail is a mobile app that helps users find the nearest local restaurants in their neighborhood.
+TasteTrail is a mobile app build with Flutter that helps users find the nearest local restaurants in their neighborhood.
 
 ## Getting Started
 
