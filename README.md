@@ -18,9 +18,16 @@ TasteTrail includes the following features:
 
 Here's a demo video of TasteTrail in action:
 
-<a href="https://github.com/gaelxxl34/E-commerce-Images/raw/main/video.mp4"><img src="https://img.youtube.com/vi/q9TpF-Nnkdw/0.jpg"></a>
+[![TasteTrail Demo Video](https://img.youtube.com/vi/q9TpF-Nnkdw/0.jpg)](https://github.com/USERNAME/REPOSITORY/raw/main/VIDEO-FILE.mp4)
 
 Click the image above to watch the demo video.
+
+Here are some screenshots of the app:
+<br>
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/1.jpg" alt="Screenshot 1" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/2.jpg" alt="Screenshot 2" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/3(2).jpg" alt="Screenshot 3" width="200" style="margin-right: 20px;">
+<img src="https://raw.githubusercontent.com/gaelxxl34/E-commerce-Images/main/screenshots/4(2).jpg" alt="Screenshot 4" width="200">
 
 ## Contributions and Issues
 
