@@ -1,17 +1,121 @@
-# rolex_stands_finding
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TasteTrail</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.5;
+        }
 
-A new Flutter project.
+        h1 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
 
-## Getting Started
+        h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
 
-This project is a starting point for a Flutter application.
+        p {
+            margin-bottom: 1rem;
+        }
 
-A few resources to get you started if this is your first Flutter project:
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+        li {
+            margin-bottom: 0.5rem;
+        }
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-![me](https://github.com/gaelxxl34/E-commerce/assets/107554725/d195b4b5-e219-4fea-8210-eb2e3d26fc4a)
+        code {
+            background-color: #f8f8f8;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            padding: 1rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border-radius: 0.25rem;
+        }
+
+        img {
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshot-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .screenshot-container img {
+            max-width: 49%;
+        }
+    </style>
+</head>
+<body>
+  
+  
+  
+  
+  
+ 
+
+  
+  
+  
+  
+    <h1>TasteTrail</h1>
+    <p>TasteTrail is a mobile app that helps users find the nearest local restaurants in their neighborhood.</p>
+
+    <div class="screenshot-container">
+        <img src="" alt="Screenshot of TasteTrail home screen">
+        <img src=" ![login screen](https://github.com/gaelxxl34/E-commerce/assets/107554725/b85ae960-8c7b-450c-b921-904e707558c2)" alt="Screenshot of TasteTrail search screen">
+    </div>
+
+    <div class="screenshot-container">
+        <img src="screenshots/details.png" alt="Screenshot of TasteTrail restaurant details screen">
+        <img src="screenshots/map.png" alt="Screenshot of TasteTrail restaurant location on map screen">
+    </div>
+
+    <div class="screenshot-container">
+        <img src="screenshots/reviews.png" alt="Screenshot of TasteTrail restaurant reviews screen">
+        <img src="screenshots/favorites.png" alt="Screenshot of TasteTrail favorites screen">
+    </div>
+
+    <h2>Getting Started</h2>
+    <p>To get started with TasteTrail, you'll need to have the following installed on your device:</p>
+    <ul>
+        <li>An Android or iOS device</li>
+        <li>The TasteTrail app downloaded from the app store</li>
+    </ul>
+
+    <h2>Features</h2>
+    <p>TasteTrail includes the following features:</p>
+    <ul>
+        <li>Find the nearest restaurants in your neighborhood</li>
+        <li>View restaurant details, such as hours, address, and reviews</li>
+        <li>Search for restaurants by name, cuisine, or location</li>
+        <li>Save your favorite restaurants for easy access</li>
+    </ul>
+
+    <h2>Contributions and Issues</h2>
+    <p>TasteTrail is open to all contributors and issues. To contribute, please fork the repository and <code>git clone</code>. For issues, please submit to the GitHub issues page.</p>
+
+    <h2>License</h2>
+    <p>TasteTrail is distributed under the Apache 2.0 License. See <code>LICENSE</code> for more information.</p>
+</body>
+</html>
