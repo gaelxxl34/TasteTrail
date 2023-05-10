@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class catalogue extends StatelessWidget {
-  catalogue({
+class CatalogueFood extends StatelessWidget {
+  CatalogueFood({
     Key? key,
     required this.image,
     required this.text1,
@@ -14,7 +14,7 @@ class catalogue extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 360,
-      height: 220,
+      height: 230,
       child: Padding(
         padding: const EdgeInsets.only(right: 10, top: 5),
         child: Container(
@@ -25,7 +25,7 @@ class catalogue extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 145,
+                height: 155,
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(

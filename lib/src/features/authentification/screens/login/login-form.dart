@@ -41,6 +41,9 @@ class _LoginTheFormState extends State<LoginTheForm> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a phone number';
                 }
+                if (!value.startsWith('+256')) {
+                  return 'Please start the phone number with "+256" ';
+                }
                 return null;
               },
               controller: controller.phoneN,

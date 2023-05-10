@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -23,33 +24,47 @@ class NetworkController extends GetxController {
   }
 
   void _updateConnectionStatus(ConnectivityResult connectivityResult) {
-    if(kDebugMode) print("STATUS : " + connectivityResult.toString());
+    if (kDebugMode) print("STATUS : " + connectivityResult.toString());
 
-    if(connectivityResult == ConnectivityResult.none){
-      Get.rawSnackbar(
+    if (connectivityResult == ConnectivityResult.none) {
+      if (!Get.isSnackbarOpen) {
+        Get.rawSnackbar(
           messageText: const Text(
-              'PLEASE CONNECT TO THE INTERNET',
-              style : TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-              )
+            'PLEASE CONNECT TO THE INTERNET',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
           ),
           isDismissible: false,
           duration: const Duration(days: 1),
           backgroundColor: Colors.red[400]!,
-          icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+          icon: const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
           margin: EdgeInsets.zero,
-          snackStyle: SnackStyle.GROUNDED
-      );
+          snackStyle: SnackStyle.GROUNDED,
+        );
+        _startTimer();
+      }
     } else {
-      if (Get.isSnackbarOpen){
+      if (Get.isSnackbarOpen) {
         Get.closeCurrentSnackbar();
+        _stopTimer();
       }
     }
   }
 
-  @override
-  void onClose() {
-    _streamSubscription.cancel();
+  late Timer _timer;
+
+  void _startTimer() {
+    _timer = Timer(const Duration(minutes: 8), () {
+      Get.close(1);
+      exit(0);
+    });
   }
+
+  void _stopTimer() {
+    _timer.cancel();
+  }
+
 }

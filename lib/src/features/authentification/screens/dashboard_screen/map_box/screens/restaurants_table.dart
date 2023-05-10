@@ -36,10 +36,10 @@ class _RestaurantsTableState extends State<RestaurantsTable> {
           GestureDetector(
             onTap: () {
               setState(() {
-                selectedStation = List.generate(4, (index) => false);
-                selectedStation[i] = true;
+                selectedStation[i] = !selectedStation[i];
               });
             },
+
             child: StationsCard(
               name: restaurants[i]['name'],
               distance: distanceInKm[i],
@@ -81,10 +81,13 @@ class _RestaurantsTableState extends State<RestaurantsTable> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  ListView(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: stationDetails,
+                  SizedBox(
+                    height: 500,
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: stationDetails,
+                    ),
                   ),
 
                 ],

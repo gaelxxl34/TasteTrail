@@ -89,22 +89,23 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a phone number';
                 }
+                if (!value.startsWith('+256')) {
+                  return 'Please start the phone number with "+256" ';
+                }
                 return null;
               },
               controller: controller.phoneN,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.phone),
-                hintText: '+256',
-                enabledBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(width: 2, color: Colors.black), //<-- SEE HERE
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(width: 2, color: tRed), //<-- SEE HERE
-                  borderRadius: BorderRadius.circular(50.0),
-                )
+                  prefixIcon: Icon(Icons.phone),
+                  hintText: '+256',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 2, color: Colors.black),
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 2, color: tRed),
+                    borderRadius: BorderRadius.circular(50.0),
+                  )
               ),
             ),
 

@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
-
 
 import '../../../../../../../main.dart';
 import '../../../../../../constants/colors.dart';
@@ -103,12 +101,12 @@ class _HomeRestoState extends State<HomeResto> {
                   )
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height:15),
               Text('Stations nearby',
                   style: Theme.of(context).textTheme.titleLarge),
-              const SizedBox(height: 30),
+              const SizedBox(height: 15),
               SizedBox(
-                height: 300,
+                height: 220,
                 child: ListView(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -118,8 +116,8 @@ class _HomeRestoState extends State<HomeResto> {
               const Spacer(),
               ElevatedButton(
                 style:
-                    ElevatedButton.styleFrom(backgroundColor:Colors.red,
-                        padding: const EdgeInsets.all(15)),
+                ElevatedButton.styleFrom(backgroundColor:Colors.red,
+                    padding: const EdgeInsets.all(15)),
                 child: const Center(child: Text('Start my trip', style: TextStyle(color: Colors.white),)),
                 onPressed: selectedStation.contains(true) ? handleStartTrip : null,
               ),

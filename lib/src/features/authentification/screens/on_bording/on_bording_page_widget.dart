@@ -74,12 +74,12 @@ class OnBoradingPageWidget2 extends StatelessWidget {
             children: [
               Text(
                 model.title,
-                style: TextStyle(color: Colors.white, fontSize: 21, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Text(
                   model.subTitle,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 19, )
+                  style: TextStyle(color: Colors.white, fontSize: 18, )
               ),
             ],
           ),
@@ -90,7 +90,7 @@ class OnBoradingPageWidget2 extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     foregroundColor: tWhiteColor,
                     backgroundColor: Colors.black,
-                    padding: EdgeInsets.symmetric(vertical: 8)
+                    padding: EdgeInsets.symmetric(vertical: 6)
                 ),
                 onPressed: () {
                   Get.to(()=> Home());
@@ -100,7 +100,7 @@ class OnBoradingPageWidget2 extends StatelessWidget {
                 ),
               )),
           SizedBox(
-            height: 30.0,
+            height:  size.height * 0.06
           )
         ],
       ),

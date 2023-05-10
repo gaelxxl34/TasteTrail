@@ -53,14 +53,14 @@ class _StationsCardState extends State<StationsCard> {
         width: 300,
         height: 260,
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, top: 5),
+          padding: const EdgeInsets.only(right: 10, top: 0),
           child: Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CachedNetworkImage(
                   imageUrl: widget.imageUrl,
-                  height: 135,
+                  height: 145,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),

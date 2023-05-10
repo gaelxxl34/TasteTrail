@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,10 +27,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  late User? firebaseUser;
+
+  late Future<User?> _userFuture;
+
   @override
   void initState() {
-    initializeLocationAndSave();
     super.initState();
+    _userFuture = FirebaseAuth.instance.authStateChanges().first;
   }
 
   void initializeLocationAndSave() async {

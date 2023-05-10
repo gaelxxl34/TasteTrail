@@ -18,7 +18,6 @@ class catalogue extends StatelessWidget {
         padding: const EdgeInsets.only(right: 10, top: 5),
         child: Container(
 
-          //padding: EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -27,10 +26,6 @@ class catalogue extends StatelessWidget {
                 height: 145,
                 child: Container(
                   color: Colors.red,
-                  // decoration: BoxDecoration(
-                  //     image: DecorationImage(
-                  //         image: NetworkImage(image),
-                  //         fit: BoxFit.cover)),
                 ),
               ),
               Row(

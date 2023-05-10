@@ -15,16 +15,13 @@ class HomeManagement extends StatefulWidget {
 }
 
 class _HomeManagementState extends State<HomeManagement> {
-  final List<Widget> _pages = [
-    const HomeResto(),
-    const RestaurantsTable()
-  ];
+  final List<Widget> _pages = [    const HomeResto(),    const RestaurantsTable()  ];
   int _index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_index],
+      body: _pages.elementAt(_index),
       backgroundColor: tRed,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: tRed,
@@ -36,12 +33,13 @@ class _HomeManagementState extends State<HomeManagement> {
         currentIndex: _index,
         items: const [
           BottomNavigationBarItem(
-
               icon: Icon(Icons.map,color: Colors.black,), label: 'Restaurant Maps'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.fastfood,color: Colors.black), label: 'Restaurants Table',),
+            icon: Icon(Icons.fastfood,color: Colors.black), label: 'Restaurants Table',),
         ],
       ),
     );
   }
+
 }
+

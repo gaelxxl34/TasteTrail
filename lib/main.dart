@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:rolex_stands_finding/src/features/authentification/controllers/networkcontrol/dependency_injection.dart';
+import 'package:rolex_stands_finding/src/features/authentification/controllers/networkcontrol/network_controller.dart';
+import 'package:rolex_stands_finding/src/features/authentification/screens/dashboard_screen/dashboard.dart';
 import 'package:rolex_stands_finding/src/features/authentification/screens/login/login_screen.dart';
 import 'package:rolex_stands_finding/src/repository/authentification_repository/authentification_repository.dart';
 
@@ -20,10 +24,10 @@ late SharedPreferences sharedPreferences;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  sharedPreferences = await SharedPreferences.getInstance();
   await dotenv.load(fileName: "assets/config/.env");
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((value) => Get.put(AuthentificationRepository()));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => const Dashboard());
+  await Get.putAsync(() async => AuthentificationRepository());
+  sharedPreferences = await SharedPreferences.getInstance();
   DependencyInjection.init();
   runApp(const MyApp());
 }
