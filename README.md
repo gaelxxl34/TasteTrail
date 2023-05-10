@@ -18,7 +18,7 @@ TasteTrail includes the following features:
 
 Here's a demo video of TasteTrail in action:
 
-[![TasteTrail Demo Video](https://img.youtube.com/vi/q9TpF-Nnkdw/0.jpg)](https://www.youtube.com/watch?v=q9TpF-Nnkdw)
+<a href="https://github.com/gaelxxl34/E-commerce-Images/raw/main/video.mp4"><img src="https://img.youtube.com/vi/q9TpF-Nnkdw/0.jpg"></a>
 
 Click the image above to watch the demo video.
 
