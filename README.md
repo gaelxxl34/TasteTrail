@@ -16,12 +16,10 @@ TasteTrail includes the following features:
 - Search for restaurants by name, cuisine, or location
 - Save your favorite restaurants for easy access
 
-Here's a demo video of TasteTrail in action:
+Here's a demo video of TasteTrail in action: 
+[![TasteTrail Demo Video]([https://img.youtube.com/vi/VIDEO-ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO-ID](https://github-production-user-asset-6210df.s3.amazonaws.com/107554725/237393479-4f59f115-29e2-466f-9de6-50ed69950edb.mp4))
 
-<video controls width="100%">
-  <source src="https://github.com/gaelxxl34/E-commerce/assets/107554725/b7406bf8-6462-45ed-94b6-a54fd02b3a05" type="video/mp4">
-  <p>Your browser does not support the video tag.</p>
-</video>
+Click the image above to watch the demo video.
 
 ## Contributions and Issues
 
